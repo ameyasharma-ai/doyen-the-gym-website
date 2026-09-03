@@ -36,918 +36,731 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        /* Custom scrollbar and ambient glow */
-        body {
-            background-color: #0A0A0A;
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Syne', sans-serif;
-        }
-        .glow-lime {
-            box-shadow: 0 0 40px -10px rgba(204, 255, 0, 0.25);
-        }
-        .glow-lime-sm {
-            box-shadow: 0 0 20px -5px rgba(204, 255, 0, 0.3);
-        }
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-    </style>
 </head>
-<body class="bg-background text-white pb-20 md:pb-0">
+<body class="bg-background text-white font-inter antialiased overflow-x-hidden pb-20 md:pb-0">
 
-    <!-- 1. ANNOUNCEMENT BAR & STICKY HEADER -->
-    <div class="bg-primary text-background font-semibold text-xs sm:text-sm py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
-        <i data-lucide="zap" class="w-4 h-4 fill-background"></i>
-        <span>Limited Offer: Get 20% Off Annual Memberships + Free Personal Training Session!</span>
-        <a href="#contact" class="underline hover:text-black/80 font-bold ml-1 hidden sm:inline">Claim Now</a>
+    <!-- Announcement Bar -->
+    <div class="bg-primary text-background text-xs sm:text-sm font-semibold py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
+        <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+        <span>Open Mon-Sat: 6 AM – 10 PM | Fraser Rd, Patna</span>
+        <a href="#contact" class="hidden sm:inline-block underline ml-2 hover:text-black/80 font-bold">Claim Free Trial →</a>
     </div>
 
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-background/90 border-b border-zinc-800/80 transition-all duration-300">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-zinc-950/80 border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
                 <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-background font-syne font-extrabold text-xl group-hover:scale-105 transition-transform">
                     D
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-syne font-extrabold text-lg sm:text-xl tracking-wider text-white">DOYEN <span class="text-primary">THE GYM</span></span>
-                    <span class="text-[10px] text-muted tracking-widest uppercase">Patna's Elite Fitness</span>
+                    <span class="font-syne text-lg font-bold tracking-wider leading-none text-white">DOYEN</span>
+                    <span class="text-[10px] tracking-[0.25em] text-primary font-semibold uppercase">The Gym</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-muted">
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
                 <a href="#services" class="hover:text-primary transition-colors">Services</a>
                 <a href="#why-us" class="hover:text-primary transition-colors">Why Us</a>
                 <a href="#about" class="hover:text-primary transition-colors">About</a>
                 <a href="#gallery" class="hover:text-primary transition-colors">Gallery</a>
                 <a href="#reviews" class="hover:text-primary transition-colors">Reviews</a>
                 <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
-                <a href="#contact" class="hover:text-primary transition-colors">Location</a>
             </nav>
 
-            <!-- Desktop CTAs -->
-            <div class="hidden md:flex items-center gap-4">
-                <a href="tel:+919334080901" class="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-primary transition-colors">
+            <!-- Desktop CTA Buttons -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="tel:+919334080901" class="flex items-center gap-2 px-4 py-2.5 rounded-full border border-zinc-800 text-sm font-medium hover:border-primary transition-colors">
                     <i data-lucide="phone" class="w-4 h-4 text-primary"></i>
                     <span>+91 93340 80901</span>
                 </a>
-                <a href="#contact" onclick="openTrialModal()" class="bg-primary text-background font-syne font-bold px-5 py-2.5 rounded-lg hover:bg-primary-hover transition-all duration-300 flex items-center gap-2 glow-lime-sm">
-                    <span>Free Trial</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <a href="https://wa.me/919334080901?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20at%20Doyen%20The%20Gym." target="_blank" class="flex items-center gap-2 bg-primary text-background font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-primary-hover transition-all hover:scale-105">
+                    <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+                    <span>WhatsApp</span>
                 </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button id="menu-btn" class="md:hidden p-2.5 text-zinc-300 hover:text-primary focus:outline-none" aria-label="Toggle Menu">
+            <button id="menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-white hover:text-primary transition-colors">
                 <i data-lucide="menu" class="w-7 h-7"></i>
             </button>
         </div>
+    </header>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-surface border-b border-zinc-800 shadow-2xl py-6 px-6 flex flex-col gap-4 animate-fadeIn">
-            <a href="#services" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>Services</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#why-us" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>Why Us</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#about" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>About</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#gallery" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>Gallery</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#reviews" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>Reviews</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#faq" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 border-b border-zinc-800/50 flex items-center justify-between"><span>FAQ</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <a href="#contact" class="mobile-link text-lg font-medium text-zinc-200 hover:text-primary py-2 flex items-center justify-between"><span>Location & Contact</span><i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></a>
-            <div class="pt-4 flex flex-col gap-3">
-                <button onclick="openTrialModal(); toggleMobileMenu();" class="w-full bg-primary text-background font-syne font-bold py-3.5 rounded-xl text-center shadow-lg">
-                    Book Free Trial Class
-                </button>
-                <a href="https://wa.me/919334080901?text=Hi%20Doyen%20The%20Gym,%20I%20want%20to%20know%20more%20about%20membership%20plans." target="_blank" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-syne font-semibold py-3 rounded-xl text-center flex items-center justify-center gap-2">
-                    <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col p-6">
+        <div class="flex items-center justify-between pb-6 border-b border-zinc-800">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-background font-syne font-extrabold text-lg">D</div>
+                <span class="font-syne font-bold text-lg text-white">DOYEN THE GYM</span>
+            </div>
+            <button id="close-menu" aria-label="Close Menu" class="p-2 text-muted hover:text-white">
+                <i data-lucide="x" class="w-7 h-7"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 pt-8 text-lg font-medium">
+            <a href="#services" class="mobile-link hover:text-primary">Services</a>
+            <a href="#why-us" class="mobile-link hover:text-primary">Why Us</a>
+            <a href="#about" class="mobile-link hover:text-primary">About Us</a>
+            <a href="#gallery" class="mobile-link hover:text-primary">Gallery</a>
+            <a href="#reviews" class="mobile-link hover:text-primary">Reviews</a>
+            <a href="#faq" class="mobile-link hover:text-primary">FAQ</a>
+            <a href="#contact" class="mobile-link hover:text-primary">Location & Contact</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-3 pt-6 border-t border-zinc-800">
+            <a href="tel:+919334080901" class="w-full py-3.5 rounded-xl border border-zinc-700 font-medium flex items-center justify-center gap-2">
+                <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                <span>Call +91 93340 80901</span>
+            </a>
+            <a href="https://wa.me/919334080901?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20at%20Doyen%20The%20Gym." target="_blank" class="w-full py-3.5 rounded-xl bg-primary text-background font-bold flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
+                <span>Chat on WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <!-- Background Glow & Image Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="Gym Interior" class="w-full h-full object-cover opacity-20 scale-105 animate-pulse duration-[10000ms]">
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-zinc-800 mb-6 shadow-lg shadow-black/50">
+                <div class="flex items-center text-amber-400">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-medium text-white">4.6★ Rating (<span class="text-primary font-semibold">324+ Google Reviews</span>)</span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="font-syne text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+                Unleash Your Ultimate Potential at <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Patna’s Best Gym</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-muted text-base sm:text-xl max-w-2xl mb-10 leading-relaxed">
+                Experience world-class strength equipment, certified expert trainers, and an electrifying fitness community right on Fraser Road, Patna.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
+                <a href="#contact" class="w-full sm:w-auto min-h-[52px] px-8 rounded-full bg-primary text-background font-bold text-base flex items-center justify-center gap-2 hover:bg-primary-hover shadow-lg shadow-primary/20 transition-all hover:scale-105">
+                    <span>Book Your Free Trial</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="https://wa.me/919334080901?text=Hi%2C%20I%20want%20to%20know%20more%20about%20memberships%20at%20Doyen%20The%20Gym." target="_blank" class="w-full sm:w-auto min-h-[52px] px-8 rounded-full bg-surface border border-zinc-700 text-white font-semibold text-base flex items-center justify-center gap-2 hover:border-primary transition-all">
+                    <i data-lucide="message-circle" class="w-5 h-5 text-primary fill-current"></i>
                     <span>Chat on WhatsApp</span>
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- 2. HERO SECTION -->
-    <section class="relative min-h-[90vh] flex items-center justify-center bg-grid overflow-hidden pt-12 pb-20">
-        <!-- Ambient Background Glow -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Trust & Social Proof Bar -->
+    <section class="border-y border-zinc-800 bg-surface/50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="flex flex-col items-center">
+                <span class="font-syne text-3xl sm:text-4xl font-extrabold text-primary">4.6 ★</span>
+                <span class="text-xs sm:text-sm text-muted mt-1">Google Rating (324+ Reviews)</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="font-syne text-3xl sm:text-4xl font-extrabold text-white">100%</span>
+                <span class="text-xs sm:text-sm text-muted mt-1">Certified Trainers</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="font-syne text-3xl sm:text-4xl font-extrabold text-primary">Pro-Grade</span>
+                <span class="text-xs sm:text-sm text-muted mt-1">Modern Equipment</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="font-syne text-3xl sm:text-4xl font-extrabold text-white">Prime</span>
+                <span class="text-xs sm:text-sm text-muted mt-1">Fraser Road, Patna</span>
+            </div>
+        </div>
+    </section>
 
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Hero Content -->
-            <div class="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start gap-6">
-                <!-- Trust Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-zinc-800 text-xs sm:text-sm">
-                    <div class="flex items-center text-amber-400">
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+    <!-- Services / Offerings Grid -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">Our Core Offerings</span>
+            <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">Built For Serious Results</h2>
+            <p class="text-muted text-base mt-4">Whether you're looking to build muscle, shred fat, or improve endurance, we have the specialized zones and expertise you need.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-surface border border-zinc-800/80 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background transition-colors">
+                        <i data-lucide="dumbbell" class="w-7 h-7"></i>
                     </div>
-                    <span class="font-bold text-white">4.6 ★</span>
-                    <span class="text-muted">| 324+ Verified Google Reviews</span>
+                    <h3 class="font-syne text-2xl font-bold text-white mb-3">Strength Training</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6">Equipped with heavy-duty power racks, Olympic barbells, plate-loaded machines, and a comprehensive dumbbell rack up to 50kg.</p>
                 </div>
-
-                <!-- Headline -->
-                <h1 class="font-syne font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08]">
-                    Unleash Your <span class="text-primary underline decoration-primary/40 underline-offset-8">Ultimate Potential</span> at Patna’s Best Gym.
-                </h1>
-
-                <!-- Subheadline -->
-                <p class="text-zinc-400 text-base sm:text-lg lg:text-xl max-w-2xl font-normal leading-relaxed">
-                    State-of-the-art equipment, elite certified trainers, and an unstoppable fitness community located right at Fraser Road, Patna. Transform your body today.
-                </p>
-
-                <!-- CTAs -->
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-2">
-                    <a href="#contact" onclick="openTrialModal()" class="w-full sm:w-auto bg-primary text-background font-syne font-bold text-base px-8 py-4 rounded-xl hover:bg-primary-hover transition-all duration-300 flex items-center justify-center gap-3 glow-lime group">
-                        <span>Book Your Free Trial</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <a href="https://wa.me/919334080901?text=Hi%20Doyen%20The%20Gym,%20I%20would%20like%20to%20inquire%20about%20membership%20pricing." target="_blank" class="w-full sm:w-auto bg-surface hover:bg-zinc-800 text-white border border-zinc-800 font-syne font-semibold text-base px-8 py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3">
-                        <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
-                        <span>Chat on WhatsApp</span>
-                    </a>
-                </div>
-
-                <!-- Quick Operating Hours Notice -->
-                <div class="flex items-center gap-2 text-xs text-muted pt-4">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Open Today: 6:00 AM – 10:00 PM (Mon - Sat)</span>
-                </div>
+                <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                    <span>Enquire Now</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
 
-            <!-- Hero Image / Visual Card -->
-            <div class="lg:col-span-5 relative">
-                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl group">
-                    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 opacity-60"></div>
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Doyen The Gym Interior Patna" class="w-full h-[400px] sm:h-[480px] object-cover group-hover:scale-105 transition-transform duration-700">
+            <!-- Service 2 -->
+            <div class="bg-surface border border-zinc-800/80 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background transition-colors">
+                        <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-syne text-2xl font-bold text-white mb-3">Cardio Zone</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6">State-of-the-art treadmills, cross-trainers, upright & recumbent bikes, and stair climbers designed for calorie-torching endurance workouts.</p>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                    <span>Enquire Now</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-surface border border-zinc-800/80 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-background transition-colors">
+                        <i data-lucide="user-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-syne text-2xl font-bold text-white mb-3">Personal Training</h3>
+                    <p class="text-muted text-sm leading-relaxed mb-6">One-on-one coaching customized to your body type, metabolism, and fitness goals with continuous nutritional guidance.</p>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                    <span>Enquire Now</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30 border-y border-zinc-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">The Doyen Advantage</span>
+                    <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-6">Why Patna Chooses Doyen The Gym</h2>
+                    <p class="text-muted text-base leading-relaxed mb-8">We don't just provide equipment; we cultivate a high-energy environment dedicated to transforming your physique and mindset.</p>
                     
-                    <!-- Floating Badge Card -->
-                    <div class="absolute bottom-6 left-6 right-6 z-20 bg-surface/90 backdrop-blur-md border border-zinc-700/80 p-4 rounded-xl flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-                                <i data-lucide="dumbbell" class="w-6 h-6"></i>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i data-lucide="award" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-syne font-bold text-sm text-white">Pro Training Zone</h4>
-                                <p class="text-xs text-muted">Advanced Free Weights & Machines</p>
+                                <h4 class="font-syne font-bold text-white mb-1">Certified Trainers</h4>
+                                <p class="text-xs text-muted">Expert guidance ensuring safe form and rapid progression.</p>
                             </div>
                         </div>
-                        <span class="bg-primary text-background font-syne font-bold text-xs px-2.5 py-1 rounded">Active</span>
-                    </div>
-                </div>
-
-                <!-- Decorative elements -->
-                <div class="absolute -top-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-xl pointer-events-none"></div>
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-xl pointer-events-none"></div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 3. TRUST & SOCIAL PROOF BAR -->
-    <section class="border-y border-zinc-800 bg-surface/50 py-8">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="flex flex-col items-center justify-center p-4">
-                <div class="flex items-center gap-1 text-amber-400 mb-1">
-                    <i data-lucide="star" class="w-5 h-5 fill-amber-400"></i>
-                    <span class="font-syne font-extrabold text-2xl text-white">4.6</span>
-                </div>
-                <p class="text-xs sm:text-sm text-muted">Google Rating (324+ Reviews)</p>
-            </div>
-            <div class="flex flex-col items-center justify-center p-4 border-l border-zinc-800/60">
-                <div class="flex items-center gap-1 text-primary mb-1">
-                    <i data-lucide="award" class="w-6 h-6"></i>
-                    <span class="font-syne font-extrabold text-2xl text-white">100%</span>
-                </div>
-                <p class="text-xs sm:text-sm text-muted">Certified Expert Trainers</p>
-            </div>
-            <div class="flex flex-col items-center justify-center p-4 border-l border-zinc-800/60">
-                <div class="flex items-center gap-1 text-primary mb-1">
-                    <i data-lucide="map-pin" class="w-6 h-6"></i>
-                    <span class="font-syne font-extrabold text-2xl text-white">Prime</span>
-                </div>
-                <p class="text-xs sm:text-sm text-muted">Fraser Rd, Patna Location</p>
-            </div>
-            <div class="flex flex-col items-center justify-center p-4 border-l border-zinc-800/60">
-                <div class="flex items-center gap-1 text-primary mb-1">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
-                    <span class="font-syne font-extrabold text-2xl text-white">Top-Tier</span>
-                </div>
-                <p class="text-xs sm:text-sm text-muted">Modern Equipment & Hygiene</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. SERVICES / OFFERINGS GRID -->
-    <section id="services" class="py-20 sm:py-28 relative">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">Our Programs</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mt-4 mb-4">
-                    Engineered For Maximum Results
-                </h2>
-                <p class="text-muted text-base sm:text-lg">
-                    Whether you want to build raw strength, torch body fat, or sculpt your physique, we have the right program for you.
-                </p>
-            </div>
-
-            <!-- Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Service 1 -->
-                <div class="bg-surface border border-zinc-800 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                            <i data-lucide="dumbbell" class="w-7 h-7"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white mb-1">Hygienic & Safe</h4>
+                                <p class="text-xs text-muted">Regular sanitization, clean locker rooms, and AC environment.</p>
+                            </div>
                         </div>
-                        <h3 class="font-syne font-bold text-2xl mb-3 text-white">Strength Training</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            Heavy-duty Olympic racks, premium dumbbells, plate-loaded equipment, and specialized lifting platforms designed for serious muscle building.
-                        </p>
-                    </div>
-                    <div>
-                        <ul class="text-xs text-muted space-y-2 mb-6 border-t border-zinc-800/80 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Free Weight Zone</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Power Lifting Platforms</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Custom Workout Planning</li>
-                        </ul>
-                        <a href="https://wa.me/919334080901?text=Hi,%20I%20am%20interested%20in%20Strength%20Training%20at%20Doyen%20The%20Gym." target="_blank" class="w-full bg-background hover:bg-zinc-800 text-white font-syne font-semibold py-3 rounded-xl border border-zinc-800 flex items-center justify-center gap-2 transition-colors">
-                            <span>Inquire Now</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-primary"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-surface border border-zinc-800 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                            <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white mb-1">Prime Location</h4>
+                                <p class="text-xs text-muted">Easily accessible on Fraser Rd, near ICICI Bank, Patna.</p>
+                            </div>
                         </div>
-                        <h3 class="font-syne font-bold text-2xl mb-3 text-white">Cardio Zone</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            Advanced treadmills, cross-trainers, stair climbers, and stationary bikes equipped with heart-rate tracking to burn fat and boost stamina.
-                        </p>
-                    </div>
-                    <div>
-                        <ul class="text-xs text-muted space-y-2 mb-6 border-t border-zinc-800/80 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Premium Treadmills</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Stair Climbers & Rowers</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Fat Loss & Endurance Focused</li>
-                        </ul>
-                        <a href="https://wa.me/919334080901?text=Hi,%20I%20am%20interested%20in%20Cardio%20Training%20at%20Doyen%20The%20Gym." target="_blank" class="w-full bg-background hover:bg-zinc-800 text-white font-syne font-semibold py-3 rounded-xl border border-zinc-800 flex items-center justify-center gap-2 transition-colors">
-                            <span>Inquire Now</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-primary"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-surface border border-zinc-800 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-                            <i data-lucide="user-check" class="w-7 h-7"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-syne font-bold text-white mb-1">Extended Timings</h4>
+                                <p class="text-xs text-muted">Open 6 AM to 10 PM to fit your busy daily schedule.</p>
+                            </div>
                         </div>
-                        <h3 class="font-syne font-bold text-2xl mb-3 text-white">Personal Training</h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                            One-on-one coaching with expert certified trainers who build custom diet plans, routine schedules, and monitor your progress weekly.
-                        </p>
-                    </div>
-                    <div>
-                        <ul class="text-xs text-muted space-y-2 mb-6 border-t border-zinc-800/80 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Dedicated Coach</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Customized Diet Chart</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Body Composition Tracking</li>
-                        </ul>
-                        <a href="https://wa.me/919334080901?text=Hi,%20I%20am%20interested%20in%20Personal%20Training%20at%20Doyen%20The%20Gym." target="_blank" class="w-full bg-background hover:bg-zinc-800 text-white font-syne font-semibold py-3 rounded-xl border border-zinc-800 flex items-center justify-center gap-2 transition-colors">
-                            <span>Inquire Now</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-primary"></i>
-                        </a>
                     </div>
                 </div>
 
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1000&q=80" alt="Gym Workout" class="w-full h-[450px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md bg-zinc-950/70 border border-zinc-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-primary font-semibold uppercase">Ready to start?</span>
+                                <p class="font-syne font-bold text-white text-lg">Claim Your Free Trial Pass</p>
+                            </div>
+                            <a href="#contact" class="px-4 py-2 rounded-lg bg-primary text-background font-bold text-sm hover:bg-primary-hover">Book Now</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. WHY CHOOSE US SECTION -->
-    <section id="why-us" class="py-20 bg-surface/30 border-y border-zinc-800">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">The Doyen Advantage</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mt-4 mb-4">
-                    Why Patna Chooses Doyen The Gym
-                </h2>
-                <p class="text-muted text-base">
-                    We don't just provide equipment; we build a transformative fitness culture.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <div class="bg-surface p-6 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
-                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                        <i data-lucide="users" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-syne font-bold text-xl mb-2 text-white">Certified Trainers</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Experienced professionals guiding your form, posture, and progression to prevent injuries.
-                    </p>
-                </div>
-
-                <div class="bg-surface p-6 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
-                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                        <i data-lucide="shield" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-syne font-bold text-xl mb-2 text-white">Top-Tier Equipment</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Imported heavy-duty machines and ergonomic weights maintained to the highest hygiene standards.
-                    </p>
-                </div>
-
-                <div class="bg-surface p-6 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
-                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                        <i data-lucide="map-pin" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-syne font-bold text-xl mb-2 text-white">Prime Location</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Centrally located on Fraser Rd, near ICICI Bank, Old Jakkanpur, easily accessible from all parts of Patna.
-                    </p>
-                </div>
-
-                <div class="bg-surface p-6 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
-                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
-                        <i data-lucide="clock" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-syne font-bold text-xl mb-2 text-white">Flexible Timings</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Open Monday to Saturday from 6:00 AM to 10:00 PM to fit your busy schedule.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. ABOUT / STORY SECTION -->
-    <section id="about" class="py-20 sm:py-28 relative">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div class="lg:col-span-6 relative">
+    <!-- About / Story Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 relative">
                 <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80" alt="Gym workout equipment" class="rounded-2xl object-cover h-[280px] sm:h-[350px] w-full border border-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Fitness training at Doyen" class="rounded-2xl object-cover h-[280px] sm:h-[350px] w-full border border-zinc-800 mt-8">
-                </div>
-                <div class="absolute -bottom-6 -right-6 bg-primary text-background p-6 rounded-2xl font-syne font-extrabold shadow-2xl hidden sm:block">
-                    <div class="text-3xl">4.6 ★</div>
-                    <div class="text-xs uppercase tracking-wider font-semibold">Google Rated Patna Gym</div>
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Gym Equipment" class="rounded-2xl object-cover h-64 w-full border border-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Fitness Training" class="rounded-2xl object-cover h-64 w-full border border-zinc-800 mt-8">
                 </div>
             </div>
-
-            <div class="lg:col-span-6 flex flex-col gap-6">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full w-max">Our Story</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight leading-tight">
-                    Redefining Fitness Standards in Patna
-                </h2>
-                <p class="text-zinc-300 text-base leading-relaxed">
-                    Located strategically on Fraser Road near ICICI Bank, Old Jakkanpur, <strong class="text-white">DOYEN THE GYM</strong> was founded with a singular mission: to provide world-class fitness infrastructure combined with expert guidance to help every individual shatter their limits.
+            
+            <div class="order-1 lg:order-2">
+                <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">About Doyen The Gym</span>
+                <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-6">Forging Champions in the Heart of Patna</h2>
+                <p class="text-muted text-base leading-relaxed mb-6">
+                    Located centrally on Fraser Road, near ICICI Bank, Old Jakkanpur, Lodipur, DOYEN THE GYM is Patna's premier destination for fitness enthusiasts of all levels. We believe that true fitness goes beyond aesthetics—it’s about building disciplined strength, stamina, and confidence.
                 </p>
-                <p class="text-muted text-base leading-relaxed">
-                    Boasting an impressive 4.6-star rating from over 324 dedicated members, our community is built on discipline, sweat, and mutual support. Whether you are a beginner taking your first steps into fitness or an advanced athlete prepping for performance, Doyen is your ultimate training ground.
+                <p class="text-muted text-base leading-relaxed mb-8">
+                    With immaculate facility maintenance, top-of-the-line gear, and an encouraging community, our members consistently achieve their fitness milestones. Come experience the difference yourself.
                 </p>
-
-                <div class="grid grid-cols-2 gap-6 pt-4 border-t border-zinc-800">
-                    <div>
-                        <div class="font-syne font-extrabold text-3xl text-primary mb-1">324+</div>
-                        <div class="text-xs text-muted">Satisfied Reviewers on Google</div>
-                    </div>
-                    <div>
-                        <div class="font-syne font-extrabold text-3xl text-primary mb-1">16 Hrs</div>
-                        <div class="text-xs text-muted">Daily Operation (6 AM - 10 PM)</div>
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <a href="#contact" onclick="openTrialModal()" class="inline-flex items-center gap-3 bg-primary text-background font-syne font-bold px-8 py-4 rounded-xl hover:bg-primary-hover transition-colors">
-                        <span>Join Our Community</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <div class="flex items-center gap-6">
+                    <a href="tel:+919334080901" class="flex items-center gap-2 text-white font-semibold hover:text-primary transition-colors">
+                        <i data-lucide="phone-call" class="w-5 h-5 text-primary"></i>
+                        <span>+91 93340 80901</span>
                     </a>
+                    <span class="text-zinc-700">|</span>
+                    <span class="text-muted text-sm">Fraser Rd, Patna</span>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 7. INTERACTIVE SHOWCASE / GALLERY -->
-    <section id="gallery" class="py-20 bg-surface/30 border-y border-zinc-800">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Interactive Showcase / Gallery -->
+    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">Gym Showcase</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mt-4 mb-4">
-                    Inside Doyen The Gym
-                </h2>
-                <p class="text-muted text-base">
-                    Take a virtual tour of our spacious workout floors, high-end gear, and pristine ambiance.
-                </p>
+                <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">Visual Tour</span>
+                <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">Inside Our Facility</h2>
+                <p class="text-muted text-base mt-4">Take a look at our spacious workout floors, high-end equipment, and motivating ambience.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 group h-72">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" alt="Gym Floor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <h4 class="font-syne font-bold text-lg text-white">Main Workout Floor</h4>
-                        <p class="text-xs text-muted">Equipped with state-of-the-art machinery</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group rounded-xl overflow-hidden border border-zinc-800 h-64">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Gym Floor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-sm font-bold text-white">Weight Training Arena</span>
                     </div>
                 </div>
-
-                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 group h-72">
-                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=700&q=80" alt="Free Weights Area" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <h4 class="font-syne font-bold text-lg text-white">Dumbbell & Barbell Zone</h4>
-                        <p class="text-xs text-muted">Full range of weights for all strength levels</p>
+                <div class="relative group rounded-xl overflow-hidden border border-zinc-800 h-64">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Cardio Deck" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-sm font-bold text-white">Cardio Section</span>
                     </div>
                 </div>
-
-                <div class="relative rounded-2xl overflow-hidden border border-zinc-800 group h-72">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=80" alt="Cardio Section" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <h4 class="font-syne font-bold text-lg text-white">Cardio Section</h4>
-                        <p class="text-xs text-muted">Advanced treadmills and stamina stations</p>
+                <div class="relative group rounded-xl overflow-hidden border border-zinc-800 h-64">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Dumbbells" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-sm font-bold text-white">Pro Dumbbell Racks</span>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden border border-zinc-800 h-64">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80" alt="Training Zone" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-sm font-bold text-white">Training Equipment</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. CUSTOMER REVIEWS SECTION -->
-    <section id="reviews" class="py-20 sm:py-28">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-1 text-amber-400 bg-surface px-4 py-1.5 rounded-full border border-zinc-800 mb-4">
-                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    <span class="font-bold text-white ml-2">4.6 / 5.0 Rating</span>
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">Google Reviews</span>
+            <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">Loved By 324+ Members</h2>
+            <p class="text-muted text-base mt-4">Read what our fitness community has to say about their experience at Doyen The Gym.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Review 1 -->
+            <div class="bg-surface border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center text-amber-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-muted text-sm leading-relaxed mb-6">"Best gym on Fraser Road! Excellent equipment quality, very motivating trainers, and great crowd. Highly recommended for serious fitness lovers."</p>
                 </div>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mb-4">
-                    Loved By 324+ Patna Fitness Enthusiasts
-                </h2>
-                <p class="text-muted text-base">
-                    Read authentic experiences from our members who have transformed their lives at Doyen The Gym.
-                </p>
+                <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                    <div class="w-10 h-10 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center">A</div>
+                    <div>
+                        <h4 class="font-syne font-bold text-sm text-white">Aditya Kumar</h4>
+                        <span class="text-xs text-muted">Google Local Guide</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Review 1 -->
-                <div class="bg-surface p-8 rounded-2xl border border-zinc-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        </div>
-                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 italic">
-                            "Best gym on Fraser Road! The trainers are extremely knowledgeable and the atmosphere pushes you to lift heavier and train harder every single day. Highly recommended!"
-                        </p>
+            <!-- Review 2 -->
+            <div class="bg-surface border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center text-amber-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-syne font-bold">
-                            AK
-                        </div>
-                        <div>
-                            <h4 class="font-syne font-bold text-sm text-white">Abhishek Kumar</h4>
-                            <p class="text-xs text-muted">Verified Google Reviewer</p>
-                        </div>
+                    <p class="text-muted text-sm leading-relaxed mb-6">"Spacious, clean, and fully equipped with top-tier machines. The trainers are extremely knowledgeable and supportive during workouts."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                    <div class="w-10 h-10 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center">P</div>
+                    <div>
+                        <h4 class="font-syne font-bold text-sm text-white">Priya Sinha</h4>
+                        <span class="text-xs text-muted">Verified Member</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Review 2 -->
-                <div class="bg-surface p-8 rounded-2xl border border-zinc-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        </div>
-                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 italic">
-                            "Top-tier equipment and very clean environment. Personal training here transformed my physique in just 3 months. Love the energy and professionalism."
-                        </p>
+            <!-- Review 3 -->
+            <div class="bg-surface border border-zinc-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center text-amber-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-syne font-bold">
-                            PS
-                        </div>
-                        <div>
-                            <h4 class="font-syne font-bold text-sm text-white">Priya Singh</h4>
-                            <p class="text-xs text-muted">Verified Google Reviewer</p>
-                        </div>
+                    <p class="text-muted text-sm leading-relaxed mb-6">"Convenient location near ICICI Bank on Fraser Road. Great timings from morning till late night. Perfect gym for my schedule."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
+                    <div class="w-10 h-10 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center">R</div>
+                    <div>
+                        <h4 class="font-syne font-bold text-sm text-white">Rahul Verma</h4>
+                        <span class="text-xs text-muted">Google Local Guide</span>
                     </div>
                 </div>
-
-                <!-- Review 3 -->
-                <div class="bg-surface p-8 rounded-2xl border border-zinc-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-1 text-amber-400 mb-4">
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        </div>
-                        <p class="text-zinc-300 text-sm leading-relaxed mb-6 italic">
-                            "Prime location near ICICI Bank on Old Jakkanpur. Easy to reach, excellent timing from morning till late night. Great value for money membership plans."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-4 border-t border-zinc-800">
-                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-syne font-bold">
-                            RM
-                        </div>
-                        <div>
-                            <h4 class="font-syne font-bold text-sm text-white">Rahul Mishra</h4>
-                            <p class="text-xs text-muted">Verified Google Reviewer</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 9. FAQ ACCORDION -->
-    <section id="faq" class="py-20 bg-surface/30 border-y border-zinc-800">
-        <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 bg-surface/30 border-t border-zinc-800">
+        <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">Got Questions?</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mt-4 mb-4">
-                    Frequently Asked Questions
-                </h2>
-                <p class="text-muted text-base">
-                    Everything you need to know about joining Doyen The Gym.
-                </p>
+                <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">Got Questions?</span>
+                <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">Frequently Asked Questions</h2>
             </div>
 
             <div class="space-y-4">
-                
-                <!-- FAQ 1 -->
-                <div class="bg-surface border border-zinc-800 rounded-xl overflow-hidden transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-syne font-bold text-lg text-white focus:outline-none">
-                        <span>What are the operating hours of Doyen The Gym?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                <!-- FAQ Item 1 -->
+                <div class="border border-zinc-800 rounded-xl bg-surface overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-syne font-bold text-lg flex items-center justify-between text-white hover:text-primary transition-colors">
+                        <span>What are the gym operating hours?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-muted text-sm leading-relaxed">
-                        We are open from Monday to Saturday, 6:00 AM to 10:00 PM. You can visit anytime during these hours for workouts or membership inquiries.
+                    <div class="faq-content hidden px-6 pb-6 text-muted text-sm leading-relaxed">
+                        DOYEN THE GYM is open Monday through Saturday from 6:00 AM to 10:00 PM.
                     </div>
                 </div>
 
-                <!-- FAQ 2 -->
-                <div class="bg-surface border border-zinc-800 rounded-xl overflow-hidden transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-syne font-bold text-lg text-white focus:outline-none">
-                        <span>Do you offer a free trial class?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                <!-- FAQ Item 2 -->
+                <div class="border border-zinc-800 rounded-xl bg-surface overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-syne font-bold text-lg flex items-center justify-between text-white hover:text-primary transition-colors">
+                        <span>How can I book a free trial class?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-muted text-sm leading-relaxed">
-                        Yes! We offer a complimentary trial session so you can experience our equipment, trainers, and environment before committing. Click the "Book Free Trial" button to reserve your slot.
+                    <div class="faq-content hidden px-6 pb-6 text-muted text-sm leading-relaxed">
+                        You can easily book a free trial by filling out our inquiry form on this page or by clicking the WhatsApp button to chat instantly with our team.
                     </div>
                 </div>
 
-                <!-- FAQ 3 -->
-                <div class="bg-surface border border-zinc-800 rounded-xl overflow-hidden transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-syne font-bold text-lg text-white focus:outline-none">
-                        <span>Where is the gym located in Patna?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                <!-- FAQ Item 3 -->
+                <div class="border border-zinc-800 rounded-xl bg-surface overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-syne font-bold text-lg flex items-center justify-between text-white hover:text-primary transition-colors">
+                        <span>Where is Doyen The Gym located?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-muted text-sm leading-relaxed">
-                        We are conveniently located at Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001.
+                    <div class="faq-content hidden px-6 pb-6 text-muted text-sm leading-relaxed">
+                        We are located at Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001.
                     </div>
                 </div>
 
-                <!-- FAQ 4 -->
-                <div class="bg-surface border border-zinc-800 rounded-xl overflow-hidden transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-syne font-bold text-lg text-white focus:outline-none">
-                        <span>Are personal trainers available for beginners?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
+                <!-- FAQ Item 4 -->
+                <div class="border border-zinc-800 rounded-xl bg-surface overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-syne font-bold text-lg flex items-center justify-between text-white hover:text-primary transition-colors">
+                        <span>Are certified personal trainers available?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-muted text-sm leading-relaxed">
-                        Absolutely. We have certified personal trainers who specialize in creating customized workout routines and diet charts tailored specifically for beginners and advanced lifters alike.
+                    <div class="faq-content hidden px-6 pb-6 text-muted text-sm leading-relaxed">
+                        Yes! We have expert certified personal trainers who provide customized workout routines, weight loss/muscle gain coaching, and nutritional guidance.
                     </div>
                 </div>
-
-                <!-- FAQ 5 -->
-                <div class="bg-surface border border-zinc-800 rounded-xl overflow-hidden transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-syne font-bold text-lg text-white focus:outline-none">
-                        <span>How can I contact or join via WhatsApp?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-5 text-muted text-sm leading-relaxed">
-                        You can instantly message us on WhatsApp at +91 93340 80901 by clicking any of the WhatsApp quick action buttons on this website. Our team replies within minutes!
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 10. INTERACTIVE LOCATION & CONTACT SECTION -->
-    <section id="contact" class="py-20 sm:py-28 relative">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-primary font-syne font-semibold text-sm tracking-widest uppercase bg-primary/10 px-3 py-1 rounded-full">Visit Or Connect</span>
-                <h2 class="font-syne font-extrabold text-3xl sm:text-5xl tracking-tight mt-4 mb-4">
-                    Start Your Transformation Today
-                </h2>
-                <p class="text-muted text-base">
-                    Drop by our Fraser Road facility or fill out the form below for instant membership details.
-                </p>
+    <!-- Interactive Location & Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Info & Hours -->
+            <div>
+                <span class="text-primary text-xs sm:text-sm font-bold uppercase tracking-widest block mb-3">Get In Touch</span>
+                <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-6">Visit Or Contact Us Today</h2>
+                <p class="text-muted text-base leading-relaxed mb-8">Ready to take the first step towards your fitness goals? Reach out to us or drop by the gym on Fraser Road.</p>
+
+                <div class="space-y-6 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white mb-1">Location</h4>
+                            <p class="text-sm text-muted">Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white mb-1">Phone / WhatsApp</h4>
+                            <a href="tel:+919334080901" class="text-sm text-primary hover:underline font-semibold">+91 93340 80901</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-syne font-bold text-white mb-1">Operating Hours</h4>
+                            <p class="text-sm text-muted">Monday – Saturday: 6:00 AM – 10:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed & Directions Button -->
+                <div class="rounded-2xl overflow-hidden border border-zinc-800 relative shadow-xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.7788410065!2d85.1420675!3d25.6132048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585be6210b09%3A0x85ea2f7f8e50deb9!2sDOYEN%20THE%20GYM!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="p-4 bg-surface border-t border-zinc-800 flex items-center justify-between">
+                        <span class="text-xs text-muted font-medium">Fraser Rd, Patna, Bihar</span>
+                        <a href="https://www.google.com/maps/place/DOYEN+THE+GYM/data=!4m7!3m6!1s0x39ed585be6210b09:0x85ea2f7f8e50deb9!8m2!3d25.6132048!4d85.1420675!16s%2Fg%2F119vd5zvr!19sChIJCQsh5ltY7TkRud5Qjn8v6oU?authuser=0&hl=en&rclk=1" target="_blank" class="px-4 py-2 rounded-lg bg-primary text-background font-bold text-xs hover:bg-primary-hover flex items-center gap-1.5">
+                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+                            <span>Get Directions</span>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                
-                <!-- Contact Form & Info -->
-                <div class="lg:col-span-6 bg-surface p-8 sm:p-10 rounded-2xl border border-zinc-800">
-                    <h3 class="font-syne font-bold text-2xl mb-6 text-white">Membership / Free Trial Inquiry</h3>
-                    
-                    <form id="inquiry-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
-                        <div>
-                            <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Full Name</label>
-                            <input type="text" id="name" required placeholder="Enter your full name" class="w-full bg-background border border-zinc-800 rounded-xl px-4 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-primary transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Phone Number</label>
-                            <input type="tel" id="phone" required placeholder="Enter your 10-digit mobile number" class="w-full bg-background border border-zinc-800 rounded-xl px-4 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-primary transition-colors">
-                        </div>
+            <!-- Inquiry Form -->
+            <div class="bg-surface border border-zinc-800 rounded-3xl p-8 shadow-2xl relative">
+                <h3 class="font-syne text-2xl font-bold text-white mb-2">Book Free Trial / Membership Inquiry</h3>
+                <p class="text-muted text-sm mb-6">Fill out the form below and our team will get in touch with you instantly.</p>
 
-                        <div>
-                            <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Interested Program</label>
-                            <select id="service" class="w-full bg-background border border-zinc-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-primary transition-colors">
-                                <option value="Strength Training">Strength Training</option>
-                                <option value="Cardio Zone">Cardio Zone</option>
-                                <option value="Personal Training">Personal Training</option>
-                                <option value="General Gym Membership">General Gym Membership</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-muted uppercase tracking-wider mb-2">Message (Optional)</label>
-                            <textarea id="message" rows="3" placeholder="Any specific goal or question?" class="w-full bg-background border border-zinc-800 rounded-xl px-4 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-primary transition-colors"></textarea>
-                        </div>
-
-                        <button type="submit" id="submit-btn" class="w-full bg-primary text-background font-syne font-bold py-4 rounded-xl hover:bg-primary-hover transition-colors flex items-center justify-center gap-2 glow-lime-sm">
-                            <span id="btn-text">Submit Inquiry</span>
-                            <div id="btn-spinner" class="hidden w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin"></div>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Location Details & Google Map Embed -->
-                <div class="lg:col-span-6 flex flex-col gap-6">
-                    <div class="bg-surface p-8 rounded-2xl border border-zinc-800 space-y-6">
-                        <h3 class="font-syne font-bold text-2xl text-white">Location & Hours</h3>
-                        
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-primary shrink-0 mt-1"></i>
-                                <div>
-                                    <strong class="text-white block mb-0.5">Address:</strong>
-                                    <span class="text-muted">Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="phone" class="w-5 h-5 text-primary shrink-0 mt-1"></i>
-                                <div>
-                                    <strong class="text-white block mb-0.5">Phone / WhatsApp:</strong>
-                                    <a href="tel:+919334080901" class="text-muted hover:text-primary transition-colors">+91 93340 80901</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="clock" class="w-5 h-5 text-primary shrink-0 mt-1"></i>
-                                <div>
-                                    <strong class="text-white block mb-0.5">Operating Hours:</strong>
-                                    <span class="text-muted">Monday – Saturday: 6:00 AM – 10:00 PM<br>Sunday: Closed / Special Timings</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                            <a href="https://www.google.com/maps/place/DOYEN+THE+GYM/data=!4m7!3m6!1s0x39ed585be6210b09:0x85ea2f7f8e50deb9!8m2!3d25.6132048!4d85.1420675!16s%2Fg%2F119vd5zvr!19sChIJCQsh5ltY7TkRud5Qjn8v6oU?authuser=0&hl=en&rclk=1" target="_blank" class="flex-1 bg-background hover:bg-zinc-800 text-white font-syne font-semibold py-3 rounded-xl border border-zinc-800 flex items-center justify-center gap-2 transition-colors">
-                                <i data-lucide="navigation" class="w-4 h-4 text-primary"></i>
-                                <span>Get Directions</span>
-                            </a>
-                            <a href="https://wa.me/919334080901?text=Hi%20Doyen%20The%20Gym,%20I%20am%20at%20your%20location%20page%20and%20want%20to%20chat." target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-syne font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors">
-                                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                <span>WhatsApp Us</span>
-                            </a>
-                        </div>
+                <form id="inquiry-form" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Your Name</label>
+                        <input type="text" id="name" required class="w-full bg-background border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Enter your full name">
                     </div>
-
-                    <!-- Google Maps Embed -->
-                    <div class="rounded-2xl overflow-hidden border border-zinc-800 h-[300px] w-full">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.778546593922!2d85.1420675!3d25.6132048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585be6210b09%3A0x85ea2f7f8e50deb9!2sDOYEN%20THE%20GYM!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Doyen The Gym Google Map Location">
-                        </iframe>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Phone Number</label>
+                        <input type="tel" id="phone" required class="w-full bg-background border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Enter your phone number">
                     </div>
-
-                </div>
-
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Select Service</label>
+                        <select id="service" class="w-full bg-background border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors">
+                            <option>Free Trial Class</option>
+                            <option>Strength Training Membership</option>
+                            <option>Cardio Zone Membership</option>
+                            <option>Personal Training</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Message (Optional)</label>
+                        <textarea id="message" rows="3" class="w-full bg-background border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Any specific goals or questions?"></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="w-full min-h-[52px] rounded-xl bg-primary text-background font-bold text-base hover:bg-primary-hover transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                        <span id="btn-text">Submit Inquiry</span>
+                        <div id="btn-spinner" class="hidden w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin"></div>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- 11. STICKY MOBILE ACTION BAR -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-t border-zinc-800 p-3 grid grid-cols-2 gap-3">
-        <a href="tel:+919334080901" class="bg-zinc-800 hover:bg-zinc-700 text-white font-syne font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm">
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-zinc-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <!-- Col 1 -->
+            <div class="md:col-span-1">
+                <a href="#" class="flex items-center gap-2 mb-4">
+                    <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-background font-syne font-extrabold text-lg">D</div>
+                    <div class="flex flex-col">
+                        <span class="font-syne text-base font-bold tracking-wider leading-none text-white">DOYEN</span>
+                        <span class="text-[9px] tracking-[0.25em] text-primary font-semibold uppercase">The Gym</span>
+                    </div>
+                </a>
+                <p class="text-muted text-xs leading-relaxed mb-4">Patna's premier fitness center offering state-of-the-art strength equipment, cardio zone, and expert personal trainers.</p>
+                <div class="flex items-center gap-3 text-white">
+                    <a href="https://wa.me/919334080901" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary hover:text-background transition-colors">
+                        <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+                    </a>
+                    <a href="tel:+919334080901" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary hover:text-background transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div>
+                <h4 class="font-syne font-bold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                <ul class="space-y-2.5 text-xs text-muted">
+                    <li><a href="#services" class="hover:text-primary transition-colors">Services & Offerings</a></li>
+                    <li><a href="#why-us" class="hover:text-primary transition-colors">Why Choose Us</a></li>
+                    <li><a href="#about" class="hover:text-primary transition-colors">About Story</a></li>
+                    <li><a href="#gallery" class="hover:text-primary transition-colors">Facility Gallery</a></li>
+                    <li><a href="#reviews" class="hover:text-primary transition-colors">Customer Reviews</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div>
+                <h4 class="font-syne font-bold text-white text-sm uppercase tracking-wider mb-4">Operating Hours</h4>
+                <ul class="space-y-2.5 text-xs text-muted">
+                    <li class="flex justify-between"><span>Monday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Tuesday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Wednesday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Thursday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Friday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Saturday:</span> <span class="text-white">6 AM – 10 PM</span></li>
+                    <li class="flex justify-between"><span>Sunday:</span> <span class="text-primary font-semibold">Closed / Special Events</span></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div>
+                <h4 class="font-syne font-bold text-white text-sm uppercase tracking-wider mb-4">Location</h4>
+                <p class="text-xs text-muted mb-4">Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001</p>
+                <a href="https://www.google.com/maps/place/DOYEN+THE+GYM/data=!4m7!3m6!1s0x39ed585be6210b09:0x85ea2f7f8e50deb9!8m2!3d25.6132048!4d85.1420675!16s%2Fg%2F119vd5zvr!19sChIJCQsh5ltY7TkRud5Qjn8v6oU?authuser=0&hl=en&rclk=1" target="_blank" class="text-xs text-primary font-semibold hover:underline flex items-center gap-1">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                    <span>Open in Google Maps</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-zinc-800 text-center text-xs text-muted">
+            <p>&copy; <span id="current-year"></span> DOYEN THE GYM. All rights reserved. Designed for Fitness Excellence.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile Bottom Action Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-md border-t border-zinc-800 p-3 grid grid-cols-2 gap-3">
+        <a href="tel:+919334080901" class="flex items-center justify-center gap-2 py-3 rounded-xl border border-zinc-700 bg-zinc-900 text-white font-bold text-sm">
             <i data-lucide="phone" class="w-4 h-4 text-primary"></i>
             <span>Call Now</span>
         </a>
-        <a href="https://wa.me/919334080901?text=Hi%20Doyen%20The%20Gym,%20I%20am%20calling%20from%20mobile%20and%20want%20to%20join." target="_blank" class="bg-primary text-background font-syne font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg">
-            <i data-lucide="message-circle" class="w-4 h-4 fill-background"></i>
+        <a href="https://wa.me/919334080901?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20at%20Doyen%20The%20Gym." target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-background font-bold text-sm shadow-lg shadow-primary/20">
+            <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
             <span>WhatsApp</span>
         </a>
     </div>
 
-    <!-- 12. FOOTER -->
-    <footer class="bg-surface/80 border-t border-zinc-800 pt-16 pb-12">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
-            
-            <div class="md:col-span-5 flex flex-col gap-4">
-                <a href="#" class="flex items-center gap-2">
-                    <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-background font-syne font-extrabold text-xl">
-                        D
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-syne font-extrabold text-xl tracking-wider text-white">DOYEN <span class="text-primary">THE GYM</span></span>
-                        <span class="text-[10px] text-muted tracking-widest uppercase">Patna's Elite Fitness</span>
-                    </div>
-                </a>
-                <p class="text-muted text-sm leading-relaxed max-w-sm">
-                    Patna’s top-rated fitness sanctuary offering state-of-the-art strength training, cardio zones, and expert personal coaching on Fraser Road.
-                </p>
-                <div class="flex items-center gap-3 text-amber-400 pt-2">
-                    <div class="flex items-center">
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                    </div>
-                    <span class="text-xs text-white font-bold">4.6 ★ (324+ Google Reviews)</span>
-                </div>
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-surface border border-zinc-800 rounded-3xl p-8 max-w-md w-full text-center relative shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-primary/20 text-primary flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check" class="w-8 h-8"></i>
             </div>
-
-            <div class="md:col-span-3 flex flex-col gap-3">
-                <h4 class="font-syne font-bold text-white text-base mb-2">Quick Links</h4>
-                <a href="#services" class="text-muted hover:text-primary text-sm transition-colors">Services & Programs</a>
-                <a href="#why-us" class="text-muted hover:text-primary text-sm transition-colors">Why Choose Us</a>
-                <a href="#about" class="text-muted hover:text-primary text-sm transition-colors">About Our Gym</a>
-                <a href="#gallery" class="text-muted hover:text-primary text-sm transition-colors">Gym Showcase</a>
-                <a href="#reviews" class="text-muted hover:text-primary text-sm transition-colors">Customer Reviews</a>
-                <a href="#faq" class="text-muted hover:text-primary text-sm transition-colors">FAQ</a>
-            </div>
-
-            <div class="md:col-span-4 flex flex-col gap-3">
-                <h4 class="font-syne font-bold text-white text-base mb-2">Contact & Location</h4>
-                <p class="text-muted text-sm">Fraser Rd, Near ICICI Bank, Old Jakkanpur, Lodipur, Patna, Bihar 800001</p>
-                <p class="text-muted text-sm">Phone: <a href="tel:+919334080901" class="text-white hover:text-primary">+91 93340 80901</a></p>
-                <p class="text-muted text-sm">Hours: Mon-Sat (6 AM – 10 PM)</p>
-                <div class="pt-2">
-                    <a href="https://www.google.com/maps/place/DOYEN+THE+GYM/data=!4m7!3m6!1s0x39ed585be6210b09:0x85ea2f7f8e50deb9!8m2!3d25.6132048!4d85.1420675!16s%2Fg%2F119vd5zvr!19sChIJCQsh5ltY7TkRud5Qjn8v6oU?authuser=0&hl=en&rclk=1" target="_blank" class="text-primary hover:underline text-sm font-semibold flex items-center gap-1">
-                        <i data-lucide="map-pin" class="w-4 h-4"></i>
-                        <span>View on Google Maps</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between text-xs text-muted">
-            <p>&copy; <span id="current-year"></span> DOYEN THE GYM. All rights reserved.</p>
-            <p class="mt-2 sm:mt-0">Designed for Peak Fitness Performance in Patna.</p>
-        </div>
-    </footer>
-
-    <!-- SUCCESS MODAL POPUP -->
-    <div id="success-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-        <div class="bg-surface border border-zinc-800 rounded-2xl max-w-md w-full p-8 text-center relative">
-            <div class="w-16 h-16 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="check-circle" class="w-10 h-10"></i>
-            </div>
-            <h3 class="font-syne font-extrabold text-2xl text-white mb-3">Inquiry Received!</h3>
-            <p class="text-muted text-sm mb-6 leading-relaxed">
-                Thank you for your interest in Doyen The Gym. Our fitness consultant will contact you via phone/WhatsApp within 10 minutes to confirm your free trial class.
-            </p>
-            <button onclick="closeSuccessModal()" class="w-full bg-primary text-background font-syne font-bold py-3.5 rounded-xl hover:bg-primary-hover transition-colors">
-                Okay, Got It
-            </button>
+            <h3 class="font-syne text-2xl font-bold text-white mb-2">Inquiry Submitted!</h3>
+            <p class="text-muted text-sm mb-6">Thank you for your interest in DOYEN THE GYM. Our team will contact you shortly on WhatsApp / phone to confirm your free trial.</p>
+            <button id="close-modal" class="w-full py-3.5 rounded-xl bg-primary text-background font-bold text-sm hover:bg-primary-hover">Got It</button>
         </div>
     </div>
 
-    <!-- JavaScript Interactivity -->
+    <!-- JavaScript for Interactivity -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Set Current Year in Footer
+        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('translate-x-full');
         }
 
         menuBtn.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+        closeMenu.addEventListener('click', toggleMobileMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
         });
 
         // FAQ Accordion
-        const faqToggles = document.querySelectorAll('.faq-toggle');
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector('i');
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('lucide-icon, svg');
                 
                 // Toggle current
                 content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-
-                // Close others
-                faqToggles.forEach(other => {
-                    if (other !== toggle) {
-                        other.nextElementSibling.classList.add('hidden');
-                        other.querySelector('i').classList.remove('rotate-180');
-                    }
-                });
+                btn.classList.toggle('text-primary');
+                
+                if(icon) {
+                    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
             });
         });
 
-        // Contact Form Submission Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnSpinner = document.getElementById('btn-spinner');
+        // Contact Form Submission & Success Modal
+        const form = document.getElementById('inquiry-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnSpinner = document.getElementById('btn-spinner');
+        const successModal = document.getElementById('success-modal');
+        const closeModal = document.getElementById('close-modal');
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
             // Show loading state
-            btnText.textContent = 'Processing...';
+            btnText.textContent = 'Sending...';
             btnSpinner.classList.remove('hidden');
             submitBtn.disabled = true;
 
             setTimeout(() => {
-                // Reset state
+                // Reset form & loading state
                 btnText.textContent = 'Submit Inquiry';
                 btnSpinner.classList.add('hidden');
                 submitBtn.disabled = false;
-                document.getElementById('inquiry-form').reset();
+                form.reset();
 
-                // Open Success Modal
-                document.getElementById('success-modal').classList.remove('hidden');
+                // Show success modal
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
             }, 1200);
-        }
+        });
 
-        function closeSuccessModal() {
-            document.getElementById('success-modal').classList.add('hidden');
-        }
-
-        function openTrialModal() {
-            const contactSection = document.getElementById('contact');
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('service').value = 'Personal Training';
-        }
+        closeModal.addEventListener('click', () => {
+            successModal.classList.remove('flex');
+            successModal.classList.add('hidden');
+        });
     </script>
 </body>
 </html>
